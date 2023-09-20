@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    implementation group: 'com.google.guava', name: 'guava', version: '32.1.2-jre'
+}
+
+shadowJar {
+    archiveBaseName.set('gradleHelloOtus')
+    archiveVersion.set('1.0')
+    archiveClassifier.set('')
+    manifest{
+        attributes 'Main-Class': 'ru.otus.HelloOtus'
+    }
+}
+
+tasks.build.dependsOn tasks.shadowJar
+
+
+
+
+
+test {
+    useJUnitPlatform()
+}
