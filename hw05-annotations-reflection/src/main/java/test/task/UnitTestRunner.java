@@ -24,7 +24,6 @@ public class UnitTestRunner<T> {
                     method.invoke(test);
                 } catch (Exception e) {
                     System.out.println("Ошибка в методе before");
-                    e.printStackTrace();
                 }
             }
         }
@@ -37,7 +36,6 @@ public class UnitTestRunner<T> {
                         method.invoke(test);
                     } catch (Exception e) {
                         System.out.println("Ошибка в методе after");
-                        e.printStackTrace();
                     }
                 }
             }
@@ -53,7 +51,7 @@ public class UnitTestRunner<T> {
                     method.invoke(test);
                     testsPassed++;
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        System.out.println("Тест " + method.getName() + " не пройден.");
                     }
                 }
             }

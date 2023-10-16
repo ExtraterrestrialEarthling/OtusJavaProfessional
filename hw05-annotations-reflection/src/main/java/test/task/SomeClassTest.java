@@ -6,19 +6,19 @@ public class SomeClassTest {
 
     @Before
     public void init(){
-        System.out.println("сначала сработает before");
+        System.out.println("Сначала сработает before");
     }
 
     @Test
     public void testGoodMethod() {
-        System.out.println("затем сработает testGoodMethod");
+        System.out.println("Затем сработает testGoodMethod.");
 
     }
 
     @Test
     public void testBadMethod() throws Exception {
-        System.out.println("затем сработает testBadMethod");
-        throw new AssertionError("test failed");
+        System.out.println("Затем сработает testBadMethod.");
+        throw new Exception("test failed");
     }
 
 
