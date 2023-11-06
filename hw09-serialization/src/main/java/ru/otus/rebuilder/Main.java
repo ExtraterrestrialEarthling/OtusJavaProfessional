@@ -24,7 +24,8 @@ public class Main {
             String serializedNewData = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
             System.out.println(serializedNewData);
 
-            Path path = Paths.get("hw09-serialization","src", "main", "java", "ru", "otus", "output", "SMSDataNew.json");
+
+            Path path = Paths.get("hw09-serialization","src", "main", "java", "ru", "otus", "rebuilder", "SMSDataNew.json");
             Files.writeString(path, serializedNewData);
 
 
