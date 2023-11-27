@@ -4,4 +4,5 @@ include 'hw03-generics-and-algorithms'
 include 'hw05-annotations-reflection'
 include 'custom-annotation-processor'
 include 'hw07-ATM-emulator'
+include 'hw09-serialization'
 
