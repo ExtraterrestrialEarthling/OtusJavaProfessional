@@ -1,0 +1,14 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /app
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: hw17-https/chaos.p12
+    key-store-password: 123456
+    key-alias: chaos
+    trust-store-type: PKCS12
+    trust-store: hw17-https/truststore.p12
+    trust-store-password: 123456
+

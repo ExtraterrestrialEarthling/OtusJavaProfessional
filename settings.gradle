@@ -5,4 +5,6 @@ include 'hw05-annotations-reflection'
 include 'custom-annotation-processor'
 include 'hw07-ATM-emulator'
 include 'hw09-serialization'
+include 'hw17-https'
+include 'hw17-https-second-app'
 
