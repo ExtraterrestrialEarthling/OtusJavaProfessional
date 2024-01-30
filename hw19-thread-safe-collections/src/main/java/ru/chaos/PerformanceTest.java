@@ -60,6 +60,7 @@ public class PerformanceTest {
                 latch.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
 
             long endTime = System.currentTimeMillis();
