@@ -1,9 +1,14 @@
 package ru.chaos;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PerformanceTest {
+    private static final Logger logger = LoggerFactory.getLogger(PerformanceTest.class);
+
         public static void main(String[] args) {
             testMedianOddSizeCalculation();
             testMedianEvenSizeCalculation();
@@ -17,7 +22,7 @@ public class PerformanceTest {
             medianList.add(8);
 
             double median = medianList.getMedian();
-            System.out.println("Median: " + median); // Ожидаемый результат: 5.0
+            logger.info("Median: " + median);
         }
 
     private static void testMedianEvenSizeCalculation() {
@@ -28,7 +33,7 @@ public class PerformanceTest {
         medianList.add(10);
 
         double median = medianList.getMedian();
-        System.out.println("Median: " + median); // Ожидаемый результат: 6.5
+        logger.info("Median: " + median);
     }
 
         private static void testPerformance() {
@@ -52,16 +57,16 @@ public class PerformanceTest {
             }
 
             try {
-                latch.await(); // Ждем завершения всех потоков
+                latch.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             long endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
-            System.out.println("Total operations: " + (numThreads * operationsPerThread));
-            System.out.println("Total time: " + duration + " milliseconds");
-            System.out.println("Operations per second: " + ((numThreads * operationsPerThread) / (duration / 1000.0)));
+            logger.info("Total operations: " + (numThreads * operationsPerThread));
+            logger.info("Total time: " + duration + " milliseconds");
+            logger.info("Operations per second: " + ((numThreads * operationsPerThread) / (duration / 1000.0)));
             executorService.shutdown();
         }
     }
