@@ -11,7 +11,7 @@ import java.lang.ref.SoftReference;
 import java.util.*;
 
 @Component
-public class PersistentLruCache<K, V> implements Cache<K,V> {
+public class PersistentLruCache<K, V> implements Cache<K, V> {
     private final Map<K, SoftReference<V>> cacheItems;
     private final Logger logger;
     @Getter
@@ -30,7 +30,7 @@ public class PersistentLruCache<K, V> implements Cache<K,V> {
 
     public synchronized boolean exists(K key) {
         boolean status;
-        if(cacheItems.get(key)==null){
+        if (cacheItems.get(key) == null) {
             status = false;
         } else {
             SoftReference<V> softValue = cacheItems.get(key);
@@ -41,7 +41,7 @@ public class PersistentLruCache<K, V> implements Cache<K,V> {
     }
 
     public synchronized V get(K key) {
-        if(!exists(key)){
+        if (!exists(key)) {
             return null;
         }
         SoftReference<V> softValue = cacheItems.remove(key);
@@ -66,7 +66,7 @@ public class PersistentLruCache<K, V> implements Cache<K,V> {
         }
     }
 
-    public int size(){
+    public int size() {
         return cacheItems.size();
     }
 
@@ -75,7 +75,7 @@ public class PersistentLruCache<K, V> implements Cache<K,V> {
         logger.info("Oldest cache item evicted");
     }
 
-    private void putToCache(K key, V cacheItem){
+    private void putToCache(K key, V cacheItem) {
         cacheItems.put(key, new SoftReference<>(cacheItem));
         logger.info("Item saved to cache");
     }

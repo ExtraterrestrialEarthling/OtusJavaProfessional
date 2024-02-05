@@ -26,11 +26,11 @@ public class PersistentLruBookCacheInitializer implements CacheInitializer<Long,
 
     @Override
     public Cache<Long, Book> initialize() {
-        if(capacity<1){
+        if (capacity < 1) {
             throw new IllegalStateException("Cache capacity cannot be less than 1.");
         }
         List<Book> retrievedBooks = booksRepository.findLastCacheBooks(capacity, dataLossInterval);
-        for (Book book : retrievedBooks){
+        for (Book book : retrievedBooks) {
             persistentLruCache.add(book.getId(), book);
         }
         return persistentLruCache;

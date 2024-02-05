@@ -37,7 +37,7 @@ public class BooksServiceImpl implements BooksService {
         if (book == null) {
             logger.info(String.format("Searching for the book with id %d in database", id));
             book = booksRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Book not found in database"));
-            logger.info("Book found: " +  book.toString());
+            logger.info("Book found: " + book.toString());
             cache.add(id, book);
         }
         updateLastAccessTime(book);
@@ -45,7 +45,7 @@ public class BooksServiceImpl implements BooksService {
     }
 
 
-    private void updateLastAccessTime(Book book){
+    private void updateLastAccessTime(Book book) {
         book.setLastAccessTime(LocalDateTime.now());
         booksRepository.save(book);
     }
